@@ -27,3 +27,11 @@ class LinkedListController:
     def delete(self, deleteSSN):
         student = Student(first_name="", last_name="", ssn=deleteSSN, phone="", email="")
         self.SLL.delete(student)
+
+    def search(self, searchSSN):
+        searchStudent = Student(first_name="", last_name="", ssn=searchSSN, phone="", email="")
+        foundStudent = self.sll.retrieve(searchStudent)
+        if (foundStudent != None):
+            return foundStudent
+        else:
+            return None

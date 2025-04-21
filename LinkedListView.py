@@ -63,7 +63,7 @@ class LinkedListView(Toplevel):
 
         self.btnPrepend.grid(row=7, column=1, padx=10, pady=10)
 
-        self.btnDisplay = ttk.Button(frameRight, text="Display Data", command=self.updateDisplay())
+        self.btnDisplay = ttk.Button(frameRight, text="Display Data", command=self.updateDisplay)
         self.btnDisplay.grid(row=8, column=0,padx=10,pady=10)
 
         self.btnClear = ttk.Button(frameRight, text="Clear the Data", command=lambda:[self.tboxData.delete("1.0", tk.END)])
@@ -82,6 +82,14 @@ class LinkedListView(Toplevel):
                 command=lambda:[
                 self.controller.delete(self.entSSN.get()),
                 self.updateDisplay()])
+        self.btnDelete.grid(row=11, column=0, pady=10, padx=10)
+
+        self.btnSearch = ttk.Button(frameRight, text="Search",
+                                    command=lambda: [
+                                        self.tboxData.delete("1.0", tk.END),
+                                        self.tboxData.insert(INSERT, self.controller.search(self.entSSN.get()))
+                                                     ])
+        self.btnSearch.grid(row=11, column=1, padx=10, pady=10)
 #View Methods
     def updateDisplay(self):
         self.tboxData.delete("1.0", tk.END)
